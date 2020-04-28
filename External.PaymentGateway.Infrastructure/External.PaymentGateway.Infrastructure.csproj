@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <RootNamespace>External.PaymentGateway</RootNamespace>
+  </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="MongoDB.Driver" Version="2.10.3" />
+        <PackageReference Include="RabbitMQ.Client" Version="6.0.0" />
+        <PackageReference Include="System.Text.Json" Version="4.7.1" />
+    </ItemGroup>
+
+
+    <ItemGroup>
+    <ProjectReference Include="..\External.PaymentGateway.Core\External.PaymentGateway.Core.csproj" />
+  </ItemGroup>
+
+</Project>

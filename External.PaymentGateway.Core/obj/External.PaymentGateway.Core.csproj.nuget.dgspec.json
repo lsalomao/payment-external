@@ -1,0 +1,72 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\_dev\\docker-definitivo-commerce\\payment-external\\External.PaymentGateway.Core\\External.PaymentGateway.Core.csproj": {}
+  },
+  "projects": {
+    "C:\\_dev\\docker-definitivo-commerce\\payment-external\\External.PaymentGateway.Core\\External.PaymentGateway.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\_dev\\docker-definitivo-commerce\\payment-external\\External.PaymentGateway.Core\\External.PaymentGateway.Core.csproj",
+        "projectName": "External.PaymentGateway.Core",
+        "projectPath": "C:\\_dev\\docker-definitivo-commerce\\payment-external\\External.PaymentGateway.Core\\External.PaymentGateway.Core.csproj",
+        "packagesPath": "C:\\Users\\luizc\\.nuget\\packages\\",
+        "outputPath": "C:\\_dev\\docker-definitivo-commerce\\payment-external\\External.PaymentGateway.Core\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\luizc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\_dev\\prudential\\pob.ba.web.infrastructure.codegen\\[Packages]": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://www.myget.org/F/oragon/api/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "dependencies": {
+            "MongoDB.Driver": {
+              "target": "Package",
+              "version": "[2.10.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300-preview-015095\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
