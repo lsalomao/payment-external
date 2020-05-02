@@ -45,6 +45,11 @@ namespace External.PaymentGateway
                 throw new InvalidOperationException("Account Not found");
             }
 
+            if (payment.CVC == 12)
+            {
+                throw new Exception();
+            }
+
             account.Balance += payment.Amount;
             payment.Processed = true;
 
@@ -54,6 +59,7 @@ namespace External.PaymentGateway
 
             if (!string.IsNullOrWhiteSpace(payment.WebHookEndpoint))
             {
+                //TODO: Abstrair
                 HttpClient client = new HttpClient();
 
                 StringContent stringContent = new StringContent(payment.CorrelationId);

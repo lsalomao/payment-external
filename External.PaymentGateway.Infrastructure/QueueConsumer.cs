@@ -21,6 +21,7 @@ namespace External.PaymentGateway
             consumer.Received += (model, ea) =>
             {
                 var body = ea.Body.ToArray();
+
                 var message = Encoding.UTF8.GetString(body);
 
                 T treatedObject = default(T);
@@ -37,7 +38,7 @@ namespace External.PaymentGateway
 
                 try
                 {
-                    action(treatedObject);
+                    Dispatch(treatedObject, action);
                     rabbitMQModel.BasicAck(ea.DeliveryTag, false);
                 }
                 catch (Exception)
@@ -48,10 +49,13 @@ namespace External.PaymentGateway
 
             };
 
+
             rabbitMQModel.BasicConsume(queue: queueName,
                                  autoAck: false,
                                  consumer: consumer);
         }
-        
+
+        protected virtual void Dispatch(T treatedObject, Action<T> action) => action(treatedObject);
+
     }
 }

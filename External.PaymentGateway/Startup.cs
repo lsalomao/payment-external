@@ -54,31 +54,14 @@ namespace External.PaymentGateway
                 Password = Configuration.GetSection("Connections:RabbitMQ:Password").Value,
             });
 
-            services.AddTransient<IConnection>(sp => {
-                IConnection connection = null;
+            services.AddTransientWithRetry<IConnection, BrokerUnreachableException>((sp) => sp.GetRequiredService<ConnectionFactory>().CreateConnection(), 3);
 
-
-                var policy = Policy
-                  .Handle<BrokerUnreachableException>()
-                  .WaitAndRetry(3, retryAttempt =>
-                    TimeSpan.FromSeconds(Math.Pow(2, retryAttempt))
-                  );
-
-
-                policy.Execute(() =>
-                {
-                    connection = sp.GetRequiredService<RabbitMQ.Client.ConnectionFactory>().CreateConnection();
-                });
-
-
-                return connection;
-
-            });
             services.AddTransient(sp => sp.GetRequiredService<RabbitMQ.Client.IConnection>().CreateModel());
 
-            services.AddTransient<IConsumer<PaymentOrder>, QueueConsumer<PaymentOrder>>();
+            services.AddTransient<IConsumer<PaymentOrder>>(sp=> 
+                new ReliableQueueConsumer<PaymentOrder>(sp.GetRequiredService<IModel>(), 3)
+            );
 
-            
         }
 
         private void InitMongoDependencies(IServiceCollection services)
